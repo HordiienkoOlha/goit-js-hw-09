@@ -17,6 +17,6 @@ parcelRequire=function(e,r,t,n){var i,o="function"==typeof parcelRequire&&parcel
 },{"./types/options":"lJVm","./l10n/default":"SFEe","./utils":"U4Vg","./utils/dom":"UwHZ","./utils/dates":"viQd","./utils/formatting":"KtbI","./utils/polyfills":"pFfd"}],"c0Wa":[function(require,module,exports) {
 
 },{}],"d2uN":[function(require,module,exports) {
-"use strict";var e=t(require("flatpickr"));function t(e){return e&&e.__esModule?e:{default:e}}require("flatpickr/dist/flatpickr.min.css");const r=document.querySelector("#datetime-picker"),i=document.querySelector("button"),n={enableTime:!0,time_24hr:!0,defaultDate:new Date,minuteIncrement:1,onOpen(){i.setAttribute("disabled",!0)},onClose(e){console.log(e[0]),i.removeAttribute("disabled")}},u=(0,e.default)(r,n);
+"use strict";var e=t(require("flatpickr"));function t(e){return e&&e.__esModule?e:{default:e}}require("flatpickr/dist/flatpickr.min.css");const o=document.querySelector("#datetime-picker"),n=document.querySelector("button"),r={enableTime:!0,time_24hr:!0,defaultDate:new Date,minuteIncrement:1,onOpen(){n.setAttribute("disabled",!0)},onClose(e){n.removeAttribute("disabled"),e[0]<Date.now()&&window.alert("Please choose a date in the future"),console.log(e[0]),console.log(Date.now())}},i=(0,e.default)(o,r);n.addEventListener("click",()=>{console.log("клик")});
 },{"flatpickr":"BKNP","flatpickr/dist/flatpickr.min.css":"c0Wa"}]},{},["d2uN"], null)
-//# sourceMappingURL=/goit-js-hw-09/02-timer.a4d016be.js.map
+//# sourceMappingURL=/goit-js-hw-09/02-timer.41048482.js.map
