@@ -1,40 +1,65 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
-// import { format } from 'date-fns';
-// import { uk } from 'date-fns/locale';
 const calendarInput = document.querySelector('#datetime-picker');
 const buttonStart = document.querySelector('button');
 const dataDays = document.querySelector('[data-days]');
 const dataHours = document.querySelector('[data-hours]');
 const dataMinutes = document.querySelector('[data-minutes]');
 const dataSeconds = document.querySelector('[data-seconds]');
-// console.log(dataDays);
+
 // console.log(dataHours);
 // console.log(dataMinutes);
 // console.log(dataSeconds);
+buttonStart.setAttribute('disabled', true);
 const options = {
   enableTime: true,
   time_24hr: true,
   defaultDate: new Date(),
   minuteIncrement: 1,
-  onOpen() {
-    buttonStart.setAttribute('disabled', true);
-  },
   onClose(selectedDates) {
     buttonStart.removeAttribute('disabled');
     if (selectedDates[0] < Date.now()) {
       window.alert('Please choose a date in the future');
       buttonStart.setAttribute('disabled', true);
     }
-    console.log(selectedDates[0]);
-    console.log(Date.now());
+    buttonStart.addEventListener('click', () => {
+      const deadline = selectedDates[0].getTime();
+
+      // console.log(deadline);
+      let timerId = null;
+
+      function countDownTimer() {
+        const dateDifference = convertMs(deadline - Date.now());
+
+        // console.log(typeof dateDifference);
+        const { days, hours, minutes, seconds } = dateDifference;
+        if (days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0) {
+          clearInterval(timerId);
+        }
+        // addLeadingZero(days, hours, minutes, seconds);
+        dataDays.innerHTML = days;
+        dataHours.innerHTML = hours;
+        dataMinutes.innerHTML = minutes;
+        dataSeconds.innerHTML = seconds;
+        // console.log(dataDays);
+      }
+      countDownTimer();
+      timerId = setInterval(countDownTimer, 1000);
+      // if .length === 1 добавить методом ноль
+      // 'abc'.padStart(2, "0");
+      // if (days.length === 1) {
+      //   console.log('o');
+      // }
+      // console.log(days.length);
+    });
+
+    // const selectDate = selectedDates[0].getTime();
+    // console.log(selectDate);
+    // console.log(Date.now());
   },
 };
 const fp = flatpickr(calendarInput, options);
 
-buttonStart.addEventListener('click', () => {
-  console.log('клик');
-});
 function convertMs(ms) {
   // Number of milliseconds per unit of time
   const second = 1000;
@@ -53,7 +78,6 @@ function convertMs(ms) {
 
   return { days, hours, minutes, seconds };
 }
-
-console.log(convertMs(2000)); // {days: 0, hours: 0, minutes: 0, seconds: 2}
-console.log(convertMs(140000)); // {days: 0, hours: 0, minutes: 2, seconds: 20}
-console.log(convertMs(24140000)); // {days: 0, hours: 6 minutes: 42, seconds: 20}
+// function addLeadingZero() {
+//   value.padStart(2, '0');
+// }
