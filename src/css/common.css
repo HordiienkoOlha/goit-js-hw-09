@@ -24,12 +24,20 @@ button {
   font-family: inherit;
   font-size: inherit;
 }
-        .container {
+input {
+  padding-bottom: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 5px;
+  font-family: inherit;
+  font-size: inherit;
+}
+.container {
           height: 200px;
           position: relative;
         }
       
-        .center {
+.center {
           margin: 0;
           position: absolute;
           top: 50%;
@@ -38,6 +46,22 @@ button {
           transform: translate(-50%, -50%);
           
         }
-        .button-stop {
+.button-stop {
           margin-left: 15px;
         }
+.timer {
+          display: flex;
+        }
+.field {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  text-transform: uppercase;
+  margin-right: 10px;
+  &:last-child {
+    margin-right: 0;
+  }
+}
+.field .value {
+  font-size: 54px;
+}

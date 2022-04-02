@@ -5,7 +5,7 @@
   "main": "index.js",
   "homepage": "https://HordiienkoOlha.github.io/goit-js-hw-09",
   "scripts": {
-    "dev": "parcel src/*.html",
+    "dev": "parcel src/*.html --open",
     "build": "parcel build src/*.html --public-url /goit-js-hw-09/"
   },
   "repository": {
@@ -26,6 +26,7 @@
     "sass": "^1.32.8"
   },
   "dependencies": {
+    "date-fns": "^2.28.0",
     "flatpickr": "^4.6.11",
     "notiflix": "^3.2.5"
   }
