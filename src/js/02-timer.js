@@ -1,7 +1,6 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-
 import { convertMs } from './helpers/convertMs';
 import { addLeadingZero } from './helpers/addLeadingZero';
 
@@ -32,6 +31,7 @@ const options = {
         const { days, hours, minutes, seconds } = dateDifference;
         if (days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0) {
           clearInterval(timerId);
+          buttonStart.setAttribute('disabled', false);
         }
         const timerDays = addLeadingZero(String(days));
         const timerHours = addLeadingZero(String(hours));
