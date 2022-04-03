@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "flatpickr": "^4.6.11",
+    "lodash": "^4.17.21",
     "notiflix": "^3.2.5"
   }
 }
