@@ -32,6 +32,7 @@ const options = {
         if (days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0) {
           clearInterval(timerId);
           buttonStart.setAttribute('disabled', false);
+          calendarInput.setAttribute('disabled', false);
         }
         const timerDays = addLeadingZero(String(days));
         const timerHours = addLeadingZero(String(hours));
